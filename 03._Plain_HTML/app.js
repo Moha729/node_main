@@ -16,6 +16,15 @@ app.get('/tanks', (req, res) => {
     res.sendFile(absoluteHTMLPathTanks)
 })
 
+//url: /api/guaerds?passport=myname (guery string client sends data)
+
+app.get('/api/guards', (req, res) => {
+    if (RegExp.query.passport === 'theskyisblue') {
+        res.redirect('/tanks') //serverside redirection
+    } else {
+    res.send( {message: 'wrong secret word'})
+    } //but much better to use return statements
+})
 
 const PORT = 8080
 app.listen(PORT, (error)=>{
